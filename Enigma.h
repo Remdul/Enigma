@@ -18,7 +18,7 @@ public:
 	char rotator1[26];
 	char rotator2[26];
 	char rotator3[26];
-	uint32_t rotCount;
+	int rotCount;
 	void rotateSingle(char *rotator);
 	std::string encryptLetter(char letter);
 	char encrypt(char letter);
@@ -26,18 +26,6 @@ public:
 private:
 };
 
-class Rotor{
-public:
-
-	char forwardShift();
-	char reverseShift();
-
-private:/*
-	_windowPosition;
-	forwardOffsetMap;
-	reverseOffsetMap;
-	turnoverNotchPositions;*/
-};
 
 
 #endif

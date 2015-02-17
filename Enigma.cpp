@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include "utils.h"
 #include "Enigma.h"
+#include "Rotor.h"
 
 // Enigma German M3
 // royal flags wave kings above
@@ -122,9 +123,8 @@ int main(){
 	char *R1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char *R2 = "QWERTYUIOPASDFGHJKLZXCVBNM";
 	char *R3 = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-
 	Machine enigma = Machine(R1, R2, R3);
-
+	RotorMap;
 
 	int failcount = 0;
 	int passcount = 0;
@@ -156,4 +156,6 @@ int main(){
 	ASSERT_EQUAL(shift_char('A', 27), 'B');
 
 
+
+	std::cout << "Test::" << RotorMap[0].letQ << std::endl;
 }

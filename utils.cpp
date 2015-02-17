@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "Enigma.h"
 #include <iostream>
 
 std::vector<int> construct_shifts(const std::string &wiring)
