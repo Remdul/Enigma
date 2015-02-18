@@ -5,14 +5,18 @@
 #include <vector>
 #include "Enigma.h"
 
+
+// BASE CLASS
 class Wheel{
 public:
-    Wheel(const std::string &wiring)
+    Wheel(const std::string &wiring);
     char translateForward(char letter);
 private:
     std::vector<int> forwardShifts;
 
 };
+
+// DERIVED CLASS
 class Rotor : public Wheel{
 public:
     Rotor(const std::string &wiring, const std::vector<int> &turnoverPositions, const int ringSetting);

@@ -15,9 +15,8 @@ char Wheel::translateForward(char letter)
     return shift_char(letter, shift_index);
 }
 
-Rotor::Rotor(const std::string &wiring, const std::vector<int> &turnoverPositions, const int newRingSetting)
+Rotor::Rotor(const std::string &wiring, const std::vector<int> &turnoverPositions, const int newRingSetting) : Wheel(wiring)
 {
-    Wheel(wiring);
     windowPosition          = 0;
     ringSetting             = newRingSetting - 1;
     turnoverNotchPositions  = turnoverPositions;

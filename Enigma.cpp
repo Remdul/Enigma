@@ -120,13 +120,13 @@ char Machine::encrypt(char letter)
 	return rotator3[r3];
 }
 int main(){
-	RotorMap;
 
 	int failcount = 0;
 	int passcount = 0;
 	std::string ROTOR_I_WIRING    = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-    std::string ROTOR_II_WIRING   = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
-    std::string ROTOR_III_WIRING  = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+    //std::string ROTOR_II_WIRING   = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
+    //std::string ROTOR_III_WIRING  = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+
 
 	ASSERT_EQUAL(alphaord('A'), 0);
 	ASSERT_EQUAL(alphaord('B'), 1);
@@ -154,7 +154,19 @@ int main(){
 	ASSERT_EQUAL(shift_char('Z', 1), 'A');
 	ASSERT_EQUAL(shift_char('A', 27), 'B');
 
+    std::vector<int> IturnoverPositions;
+    IturnoverPositions.push_back(alphaord('Q'));
+    const int ringSetting = 1;
+    Rotor rotorI = Rotor(ROTOR_I_WIRING, IturnoverPositions, ringSetting);
+
+    ASSERT_EQUAL(rotorI.getWindowPosition(), 0);
+    ASSERT_EQUAL(rotorI.translateForward('A'), 'E');
+    ASSERT_EQUAL(rotorI.translateReverse('J'), 'Z');
+    rotorI.stepRotor();
+    ASSERT_EQUAL(rotorI.translateForward('A'), 'J');
+    ASSERT_EQUAL(rotorI.translateReverse('J'), 'A');
+    ASSERT_EQUAL(rotorI.getWindowPosition(), 1);
 
 
-	std::cout << "Test::" << RotorMap[0].letQ << std::endl;
+
 }
