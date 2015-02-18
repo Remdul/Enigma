@@ -13,18 +13,16 @@ std::vector<int> construct_shifts(const std::string &wiring)
 	}
 	return results;
 }
-
 std::vector<int> reverse_shifts(const std::string &wiring)
 {
-	std::vector<int> results(26);
-	int offset;
-	for (int i = 0; i < 26; i++)
-	{
-		offset = -(alphaord(wiring[i])-i);
-		results[i] = alphaord(wiring[i]);
-		std::cout << "Test:: " << alphaord(wiring[i]) << std::endl;
-	}
-	return results;
+    std::vector<int> results(26);
+    int offset;
+    for (int i = 0; i < 26; i++)
+    {
+        offset = i - alphaord(wiring[i]);
+        results[alphaord(wiring[i])] = offset;
+    }
+    return results;
 }
 
 int shift_num(int num, int offset)

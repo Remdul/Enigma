@@ -120,15 +120,14 @@ char Machine::encrypt(char letter)
 	return rotator3[r3];
 }
 int main(){
-	char *R1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char *R2 = "QWERTYUIOPASDFGHJKLZXCVBNM";
-	char *R3 = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-	Machine enigma = Machine(R1, R2, R3);
 	RotorMap;
 
 	int failcount = 0;
 	int passcount = 0;
-	std::string ROTOR_I_WIRING = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
+	std::string ROTOR_I_WIRING    = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
+    std::string ROTOR_II_WIRING   = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
+    std::string ROTOR_III_WIRING  = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+
 	ASSERT_EQUAL(alphaord('A'), 0);
 	ASSERT_EQUAL(alphaord('B'), 1);
 	ASSERT_EQUAL(alphaord('Z'), 25);
@@ -143,9 +142,9 @@ int main(){
 	ASSERT_EQUAL(test_shifts[6], -3);
 
 	std::vector<int> test_shifts2 = reverse_shifts(ROTOR_I_WIRING);
-	ASSERT_EQUAL(test_shifts2[4], 22);
-	ASSERT_EQUAL(test_shifts2[10], 17);
-	ASSERT_EQUAL(test_shifts2[3], 3);
+    ASSERT_EQUAL(shift_num(test_shifts2[4], 0), 22);
+    ASSERT_EQUAL(shift_num(test_shifts2[10], 0), 17);
+    ASSERT_EQUAL(shift_num(test_shifts2[3], 0), 3);
 
 	ASSERT_EQUAL(shift_char('A', 26), 'A');
 	ASSERT_EQUAL(shift_char('A', -26), 'A');
